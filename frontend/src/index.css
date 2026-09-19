@@ -1,16 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @layer base {
   * {
     box-sizing: border-box;
   }
-  body, html {
+
+  body,
+  html {
     margin: 0;
     padding: 0;
     width: 100%;
     min-height: 100%;
     overflow-x: hidden;
   }
+
   #root {
     width: 100%;
     min-height: 100vh;
@@ -21,55 +25,73 @@
 
 /* Floating Animations */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px) rotate(0deg);
   }
+
   50% {
     transform: translateY(-12px) rotate(1.5deg);
   }
 }
 
 @keyframes floatReverse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px) rotate(0deg);
   }
+
   50% {
     transform: translateY(10px) rotate(-1.5deg);
   }
 }
 
 @keyframes floatSlow {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px) translateX(0px);
   }
+
   50% {
     transform: translateY(-8px) translateX(6px);
   }
 }
 
 @keyframes floatSway {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px) rotate(-1deg);
   }
+
   50% {
     transform: translateY(-15px) rotate(2.5deg);
   }
 }
 
 @keyframes lanternPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     filter: drop-shadow(0 0 20px rgba(255, 205, 50, 0.7)) brightness(1);
   }
+
   50% {
     filter: drop-shadow(0 0 35px rgba(255, 220, 80, 0.95)) brightness(1.1);
   }
 }
 
 @keyframes noteFloat {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px) rotate(-8deg) scale(1);
     opacity: 0.85;
   }
+
   50% {
     transform: translateY(-14px) rotate(6deg) scale(1.08);
     opacity: 1;
@@ -77,10 +99,13 @@
 }
 
 @keyframes datePulse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
     filter: drop-shadow(0 2px 8px rgba(250, 192, 17, 0.4));
   }
+
   50% {
     transform: scale(1.03);
     filter: drop-shadow(0 4px 18px rgba(255, 225, 60, 0.85));
@@ -113,4 +138,44 @@
 
 .animate-date-pulse {
   animation: datePulse 2.8s ease-in-out infinite;
+}
+
+/* ============================================================ */
+/* About Section Animations                                      */
+/* ============================================================ */
+
+@keyframes aboutSparkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8) rotate(0deg); }
+  50%       { opacity: 1;   transform: scale(1.4) rotate(20deg); }
+}
+
+@keyframes aboutCharacterFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes aboutTitlePulse {
+  0%, 100% { filter: drop-shadow(0 4px 20px rgba(250,191,1,0.45)); transform: scale(1); }
+  50%       { filter: drop-shadow(0 6px 32px rgba(250,191,1,0.80)); transform: scale(1.025); }
+}
+
+@keyframes aboutBadgeGlow {
+  0%, 100% { box-shadow: 0 4px 20px rgba(250,191,1,0.45); }
+  50%       { box-shadow: 0 4px 40px rgba(250,191,1,0.85), 0 0 60px rgba(250,191,1,0.25); }
+}
+
+.about-sparkle {
+  animation: aboutSparkle 2.8s ease-in-out infinite;
+}
+
+.about-character-float {
+  animation: aboutCharacterFloat 5s ease-in-out infinite;
+}
+
+.about-title-pulse {
+  animation: aboutTitlePulse 3.5s ease-in-out infinite;
+}
+
+.about-badge-glow {
+  animation: aboutBadgeGlow 2.5s ease-in-out infinite;
 }
