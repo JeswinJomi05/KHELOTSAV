@@ -65,7 +65,7 @@ function Home() {
           <img
             src={dhwaniLogo}
             alt="DHWANI 26 Logo"
-            className="w-44 sm:w-56 md:w-68 lg:w-76 h-auto object-contain transition-all duration-300 transform group-hover:scale-105 filter drop-shadow-[0_4px_16px_rgba(250,192,17,0.55)] cursor-pointer"
+            className="w-32 sm:w-40 md:w-48 lg:w-56 h-auto object-contain transition-all duration-300 transform group-hover:scale-105 filter drop-shadow-[0_4px_16px_rgba(250,192,17,0.55)] cursor-pointer"
             onClick={() => setActiveModal({
               title: "DHWANI '26 FESTIVAL",
               tagline: "The Grand Annual Cultural & Sports Extravaganza",
@@ -75,7 +75,7 @@ function Home() {
         </div>
 
         {/* Decorative Floating Clouds: Top-Left (Cloud 2) */}
-        <div className="absolute top-1 sm:top-3 left-0 sm:left-4 w-28 sm:w-40 md:w-52 lg:w-64 pointer-events-none z-10 animate-float-slow">
+        <div className="absolute top-1 sm:top-3 -left-30 sm:-left-26 w-52 sm:w-64 md:w-80 lg:w-96 pointer-events-none z-10 animate-float-slow">
           <img
             src={clouds.c2}
             alt="Decorative Top Left Cloud"
@@ -84,7 +84,7 @@ function Home() {
         </div>
 
         {/* Decorative Floating Clouds: Top-Right (Cloud 1) */}
-        <div className="absolute top-1 sm:top-2 right-0 sm:right-4 w-28 sm:w-36 md:w-48 lg:w-56 pointer-events-none z-10 animate-float-reverse">
+        <div className="absolute -top-4 sm:-top-6 right-0 sm:right-4 w-28 sm:w-36 md:w-48 lg:w-56 pointer-events-none z-10 animate-float-reverse rotate-350">
           <img
             src={clouds.c1}
             alt="Decorative Top Right Cloud"
@@ -119,8 +119,8 @@ function Home() {
             src={lanternL2}
             alt="Glowing Sky Lantern Top Left"
             className={`w-11 sm:w-15 md:w-19 lg:w-22 h-auto object-contain transition-all duration-300 ${lanternIgnited
-                ? 'filter drop-shadow-[0_0_40px_rgba(255,230,80,1)] brightness-125'
-                : 'filter drop-shadow-[0_0_20px_rgba(255,200,40,0.85)]'
+              ? 'filter drop-shadow-[0_0_40px_rgba(255,230,80,1)] brightness-125'
+              : 'filter drop-shadow-[0_0_20px_rgba(255,200,40,0.85)]'
               }`}
           />
         </div>
@@ -135,8 +135,8 @@ function Home() {
             src={lanternL4}
             alt="Glowing Sky Lantern Top Right with Ribbons"
             className={`w-16 sm:w-22 md:w-28 lg:w-34 h-auto object-contain transition-all duration-300 ${lanternIgnited
-                ? 'filter drop-shadow-[0_0_40px_rgba(255,230,80,1)] brightness-125'
-                : 'filter drop-shadow-[0_0_22px_rgba(255,200,40,0.85)]'
+              ? 'filter drop-shadow-[0_0_40px_rgba(255,230,80,1)] brightness-125'
+              : 'filter drop-shadow-[0_0_22px_rgba(255,200,40,0.85)]'
               }`}
           />
         </div>
@@ -163,7 +163,7 @@ function Home() {
             <img
               src={khelotsavBg}
               alt="Khelotsav Banner Frame"
-              className="w-full h-auto object-contain filter drop-shadow-[0_15px_35px_rgba(0,0,0,0.7)] select-none pointer-events-none"
+              className="w-full scale-[1.2] h-auto object-contain filter drop-shadow-[0_15px_35px_rgba(0,0,0,0.7)] select-none pointer-events-none"
             />
 
             {/* Title Overlay: Centered "KHELOTSAV" prominently inside/over the center frame */}
@@ -196,7 +196,7 @@ function Home() {
           </div>
 
           {/* Overlapping Cloud: Bottom-Left below Arch (Cloud 5) */}
-          <div className="absolute -bottom-8 sm:-bottom-11 md:-bottom-14 left-[8%] sm:left-[12%] md:left-[15%] w-32 sm:w-44 md:w-56 pointer-events-none z-20 animate-float-slow">
+          <div className="absolute -bottom-8 sm:-bottom-11 md:-bottom-14 left-[2%] sm:left-[12%] md:left-[15%] w-32 sm:w-44 md:w-56 pointer-events-none z-20 animate-float-slow" style={{ transform: 'translateX(-50px)' }}>
             <img
               src={clouds.c5}
               alt="Cloud Bottom Left"
@@ -216,15 +216,15 @@ function Home() {
           {/* Glowing Sky Lantern 1 (Bottom Left): Large glowing lantern anchored at bottom-left edge */}
           <div
             onClick={handleLanternClick}
-            className="absolute -bottom-10 sm:-bottom-16 md:-bottom-20 lg:-bottom-24 -left-2 sm:-left-5 md:-left-7 lg:-left-8 z-30 cursor-pointer animate-float transition-all duration-300 hover:scale-110 group"
+            className="absolute top-[25px] -left-[180px] sm:-left-[204px] md:-left-[220px] lg:-left-[236px] z-30 cursor-pointer animate-float transition-all duration-300 hover:scale-110 group"
             title="Click to ignite lantern"
           >
             <img
               src={lanternL1}
               alt="Glowing Sky Lantern Bottom Left"
               className={`w-24 sm:w-32 md:w-42 lg:w-48 h-auto object-contain -rotate-[14deg] transition-all duration-300 ${lanternIgnited
-                  ? 'filter drop-shadow-[0_0_45px_rgba(255,230,80,1)] brightness-125'
-                  : 'filter drop-shadow-[0_0_28px_rgba(255,200,30,0.9)] group-hover:drop-shadow-[0_0_42px_rgba(255,225,60,1)]'
+                ? 'filter drop-shadow-[0_0_45px_rgba(255,230,80,1)] brightness-125'
+                : 'filter drop-shadow-[0_0_28px_rgba(255,200,30,0.9)] group-hover:drop-shadow-[0_0_42px_rgba(255,225,60,1)]'
                 }`}
             />
           </div>
@@ -232,92 +232,7 @@ function Home() {
         </div>
       </main>
 
-      {/* ========================================================================= */}
-      {/* D. BOTTOM NAVIGATION BAR / FOOTER                                          */}
-      {/* ========================================================================= */}
-      <footer className="w-full bg-[#18174c] border-t-2 border-[#2b276d] shadow-[0_-12px_32px_rgba(0,0,0,0.6)] py-2.5 sm:py-3.5 px-3 sm:px-8 z-30 relative">
-        <div className="max-w-6xl mx-auto flex items-center justify-between gap-3 sm:gap-6 md:gap-10 overflow-x-auto no-scrollbar">
-          {/* 1. carnavale.png */}
-          <div
-            onClick={() => setActiveModal({
-              title: "CARNAVAL RAZZMATAZZ",
-              tagline: "Music, Fun, Food & Festivities",
-              content: "Experience the vibrant street carnival with dynamic music, live performances, food stalls, gaming arenas, and open mics throughout the campus!"
-            })}
-            className="flex-1 flex items-center justify-center min-w-[80px] sm:min-w-[110px] md:min-w-[130px] group cursor-pointer"
-          >
-            <img
-              src={carnavaleLogo}
-              alt="Carnaval Razzmatazz"
-              className="h-9 sm:h-11 md:h-13 lg:h-15 w-auto object-contain hover:scale-110 -translate-y-0.5 hover:-translate-y-1.5 transition-all duration-200 filter hover:brightness-110 hover:drop-shadow-[0_0_12px_rgba(250,192,17,0.7)]"
-            />
-          </div>
-
-          {/* 2. dhwani26.png */}
-          <div
-            onClick={() => setActiveModal({
-              title: "DHWANI 26 - FLAGSHIP SHOWS",
-              tagline: "The Grand Campus Celebration",
-              content: "Discover our headliner battle-of-the-bands, EDM night, fashion show, choreo night, and inter-college cultural competitions!"
-            })}
-            className="flex-1 flex items-center justify-center min-w-[80px] sm:min-w-[110px] md:min-w-[130px] group cursor-pointer"
-          >
-            <img
-              src={dhwaniLogo}
-              alt="Dhwani 26"
-              className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto object-contain hover:scale-110 -translate-y-0.5 hover:-translate-y-1.5 transition-all duration-200 filter hover:brightness-110 hover:drop-shadow-[0_0_12px_rgba(250,192,17,0.7)]"
-            />
-          </div>
-
-          {/* 3. KHELOTSAV.png */}
-          <div
-            onClick={() => setActiveModal({
-              title: "KHELOTSAV SPORTS TOURNAMENT",
-              tagline: "Register Your College Teams",
-              content: "Registrations are live for Badminton (Singles/Doubles), Cricket, Chess, Football, Basketball, and Volleyball. Over 1 Lakh in prize money!"
-            })}
-            className="flex-1 flex items-center justify-center min-w-[80px] sm:min-w-[110px] md:min-w-[130px] group cursor-pointer"
-          >
-            <img
-              src={khelotsavTitle}
-              alt="Khelotsav"
-              className="h-9 sm:h-11 md:h-13 lg:h-15 w-auto object-contain hover:scale-110 -translate-y-0.5 hover:-translate-y-1.5 transition-all duration-200 filter hover:brightness-110 hover:drop-shadow-[0_0_12px_rgba(250,192,17,0.7)]"
-            />
-          </div>
-
-          {/* 4. carnavale.png */}
-          <div
-            onClick={() => setActiveModal({
-              title: "CARNAVAL RAZZMATAZZ CONCERTS",
-              tagline: "Pro Shows & Celebrity Nights",
-              content: "Get your passes for celebrity artist performances, international DJ sets, and evening carnival fireworks at the main stadium grounds!"
-            })}
-            className="flex-1 flex items-center justify-center min-w-[80px] sm:min-w-[110px] md:min-w-[130px] group cursor-pointer"
-          >
-            <img
-              src={carnavaleLogo}
-              alt="Carnaval Razzmatazz"
-              className="h-9 sm:h-11 md:h-13 lg:h-15 w-auto object-contain hover:scale-110 -translate-y-0.5 hover:-translate-y-1.5 transition-all duration-200 filter hover:brightness-110 hover:drop-shadow-[0_0_12px_rgba(250,192,17,0.7)]"
-            />
-          </div>
-
-          {/* 5. dhwani26.png */}
-          <div
-            onClick={() => setActiveModal({
-              title: "DHWANI '26 CONTACT & INFO",
-              tagline: "Student Coordinators",
-              content: "Have questions? Reach out to student coordinators Basil (+91 8848076123) or Fenza (+91 9037909331) for hospitality, registration, and tournament schedules."
-            })}
-            className="flex-1 flex items-center justify-center min-w-[80px] sm:min-w-[110px] md:min-w-[130px] group cursor-pointer"
-          >
-            <img
-              src={dhwaniLogo}
-              alt="Dhwani 26"
-              className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto object-contain hover:scale-110 -translate-y-0.5 hover:-translate-y-1.5 transition-all duration-200 filter hover:brightness-110 hover:drop-shadow-[0_0_12px_rgba(250,192,17,0.7)]"
-            />
-          </div>
-        </div>
-      </footer>
+      
 
       {/* ========================================================================= */}
       {/* INTERACTIVE MODAL POPUP                                                   */}
