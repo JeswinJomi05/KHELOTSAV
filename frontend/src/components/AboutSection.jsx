@@ -22,6 +22,15 @@ export default function AboutSection() {
   }, [])
 
   return (
+    <>
+    <style>{`
+      @media (max-width: 768px) {
+        .about-character-col { display: none !important; }
+        .about-text-col { padding: clamp(3rem, 8vw, 5rem) clamp(1.5rem, 6vw, 4rem) !important; }
+        .about-title-img { width: 90% !important; }
+        .about-body-text { font-size: clamp(1.2rem, 4.5vw, 1.6rem) !important; line-height: 1.9 !important; }
+      }
+    `}</style>
     <section
       ref={sectionRef}
       id="about"
@@ -35,6 +44,7 @@ export default function AboutSection() {
     >
       {/* ── LEFT: character fills full height, lighten blend removes grey ── */}
       <div
+        className="about-character-col"
         style={{
           position: "relative",
           flexShrink: 0,
@@ -71,6 +81,7 @@ export default function AboutSection() {
 
       {/* ── RIGHT: KHELOTSAV logo + yellow body text, vertically centered ── */}
       <div
+        className="about-text-col"
         style={{
           flex: 1,
           display: "flex",
@@ -85,6 +96,7 @@ export default function AboutSection() {
       >
         {/* KHELOTSAV title logo — sized to match mockup proportions */}
         <img
+          className="about-title-img"
           src={khelotsavTitle}
           alt="KHELOTSAV"
           style={{
@@ -99,6 +111,7 @@ export default function AboutSection() {
 
         {/* Body paragraph — #FABF01, Poppins semibold, large, centered */}
         <p
+          className="about-body-text"
           style={{
             color: "#FABF01",
             fontFamily: "Poppins, Montserrat, Inter, sans-serif",
@@ -118,5 +131,6 @@ export default function AboutSection() {
       </div>
 
     </section>
+    </>
   )
 }

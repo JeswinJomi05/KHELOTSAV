@@ -50,12 +50,18 @@ const TextLoop = ({
 
     // Wait one frame so the browser has rendered the items and we can measure
     const raf = requestAnimationFrame(() => {
-      const oneSetWidth = track.scrollWidth / REPEATS;   // width of a single set
+      // Measure the exact pixel distance from the start of item[0] to item[IMAGES.length].
+      // This is the true "one set width" inclusive of all gaps, regardless of padding.
+      const item0 = track.children[0] as HTMLElement | null;
+      const itemN = track.children[IMAGES.length] as HTMLElement | null;
+      if (!item0 || !itemN) return;
+
+      const oneSetWidth = itemN.offsetLeft - item0.offsetLeft;
       if (!oneSetWidth) return;
 
       const duration = oneSetWidth / speed;
 
-      // Start from 0, move one full set width in the chosen direction
+      // Start at 0 and animate exactly one set width so the loop is pixel-perfect
       gsap.set(track, { x: 0 });
 
       const tween = gsap.to(track, {

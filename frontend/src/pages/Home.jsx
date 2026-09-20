@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import TextLoop from '../components/TextEffect'
 // =============================================================================
 // ASSET IMPORTS (Home Section)
 // =============================================================================
@@ -35,7 +35,7 @@ function Home() {
 
   return (
     <div
-      className="min-h-screen w-full overflow-hidden flex flex-col justify-between relative select-none font-sans bg-[#590729]"
+      className="sm:min-h-screen w-full overflow-hidden flex flex-col justify-between relative select-none font-sans bg-[#590729]"
       style={{
         backgroundImage: `url(${bgImg})`,
         backgroundSize: 'cover',
@@ -56,16 +56,40 @@ function Home() {
         <div className="absolute top-[65%] right-[7%] w-1.5 h-1.5 bg-amber-200 rounded-full animate-ping opacity-60" />
       </div>
 
-      {/* ========================================================================= */}
-      {/* B. TOP & HEADER SECTION                                                    */}
-      {/* ========================================================================= */}
-      <header className="relative w-full pt-3 sm:pt-5 md:pt-7 px-4 z-20 flex flex-col items-center">
-        {/* Top Centered Brand Logo: DHWANI 26 */}
-        <div className="relative z-20 group">
+      {/* =========================================================================
+          MOBILE LAYOUT  (< sm = below 640px)
+          Full-screen portrait poster matching BANNER WP.jpg reference
+      ========================================================================= */}
+      <div className="sm:hidden flex flex-col items-center w-full relative z-10 pt-[70px] px-3">
+
+        {/* --- TOP DECORATION ROW --- */}
+        {/* Top-Left Cloud */}
+        <div className="absolute top-0 -left-8 w-40 pointer-events-none z-10 animate-float-slow">
+          <img src={clouds.c2} alt="Top Left Cloud" className="w-full h-auto object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]" />
+        </div>
+
+        {/* Top-Right Lantern (L4 with ribbons) */}
+        <div
+          onClick={handleLanternClick}
+          className="absolute top-2 right-2 z-20 cursor-pointer animate-float-sway [animation-delay:2.4s] transition-transform duration-300 active:scale-110"
+          title="Click to illuminate sky lantern"
+        >
+          <img
+            src={lanternL4}
+            alt="Glowing Sky Lantern Top Right"
+            className={`w-20 h-auto object-contain transition-all duration-300 ${lanternIgnited
+              ? 'filter drop-shadow-[0_0_40px_rgba(255,230,80,1)] brightness-125'
+              : 'filter drop-shadow-[0_0_22px_rgba(255,200,40,0.85)]'
+            }`}
+          />
+        </div>
+
+        {/* --- DHWANI 26 LOGO (centered top) --- */}
+        <div className="relative z-20 mt-1 mb-0">
           <img
             src={dhwaniLogo}
             alt="DHWANI 26 Logo"
-            className="w-32 sm:w-40 md:w-48 lg:w-56 h-auto object-contain transition-all duration-300 transform group-hover:scale-105 filter drop-shadow-[0_4px_16px_rgba(250,192,17,0.55)] cursor-pointer"
+            className="w-32 h-auto object-contain filter drop-shadow-[0_4px_16px_rgba(250,192,17,0.65)] cursor-pointer active:scale-95 transition-transform"
             onClick={() => setActiveModal({
               title: "DHWANI '26 FESTIVAL",
               tagline: "The Grand Annual Cultural & Sports Extravaganza",
@@ -74,104 +98,26 @@ function Home() {
           />
         </div>
 
-        {/* Decorative Floating Clouds: Top-Left (Cloud 2) */}
-        <div className="absolute top-1 sm:top-3 -left-30 sm:-left-26 w-52 sm:w-64 md:w-80 lg:w-96 pointer-events-none z-10 animate-float-slow">
-          <img
-            src={clouds.c2}
-            alt="Decorative Top Left Cloud"
-            className="w-full h-auto object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)]"
-          />
-        </div>
+        {/* --- KHELOTSAV BANNER (main hero, fills width, pushed to top) --- */}
+        <div className="relative w-full flex flex-col items-center mt-[30px]">
 
-        {/* Decorative Floating Clouds: Top-Right (Cloud 1) */}
-        <div className="absolute -top-4 sm:-top-6 right-0 sm:right-4 w-28 sm:w-36 md:w-48 lg:w-56 pointer-events-none z-10 animate-float-reverse rotate-350">
-          <img
-            src={clouds.c1}
-            alt="Decorative Top Right Cloud"
-            className="w-full h-auto object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)]"
-          />
-        </div>
-
-        {/* Floating Musical Notes with slight rotation & opacity */}
-        <div className="absolute top-10 sm:top-12 md:top-14 left-[20%] sm:left-[26%] md:left-[29%] pointer-events-none z-10 animate-note-float">
-          <img
-            src={musicalNotes}
-            alt="Musical Note Left"
-            className="w-8 sm:w-11 md:w-13 h-auto object-contain filter drop-shadow-[0_0_12px_rgba(255,0,118,0.7)]"
-          />
-        </div>
-
-        <div className="absolute top-8 sm:top-11 md:top-13 right-[22%] sm:right-[27%] md:right-[30%] pointer-events-none z-10 animate-note-float [animation-delay:1.6s]">
-          <img
-            src={musicalNotes}
-            alt="Musical Note Right"
-            className="w-7 sm:w-10 md:w-12 h-auto object-contain filter drop-shadow-[0_0_12px_rgba(255,0,118,0.7)] transform scale-x-[-1]"
-          />
-        </div>
-
-        {/* Glowing Sky Lantern 2 (Top Left Floating) */}
-        <div
-          onClick={handleLanternClick}
-          className="absolute top-8 sm:top-11 md:top-14 left-[13%] sm:left-[16%] md:left-[18%] z-20 cursor-pointer animate-float-sway transition-transform duration-300 hover:scale-110"
-          title="Click to illuminate sky lantern"
-        >
-          <img
-            src={lanternL2}
-            alt="Glowing Sky Lantern Top Left"
-            className={`w-11 sm:w-15 md:w-19 lg:w-22 h-auto object-contain transition-all duration-300 ${lanternIgnited
-              ? 'filter drop-shadow-[0_0_40px_rgba(255,230,80,1)] brightness-125'
-              : 'filter drop-shadow-[0_0_20px_rgba(255,200,40,0.85)]'
-              }`}
-          />
-        </div>
-
-        {/* Glowing Sky Lantern 3 (Top Right Floating with Long Ribbons) */}
-        <div
-          onClick={handleLanternClick}
-          className="absolute top-3 sm:top-5 md:top-7 right-[8%] sm:right-[11%] md:right-[13%] z-20 cursor-pointer animate-float-sway [animation-delay:2.4s] transition-transform duration-300 hover:scale-110"
-          title="Click to illuminate sky lantern"
-        >
-          <img
-            src={lanternL4}
-            alt="Glowing Sky Lantern Top Right with Ribbons"
-            className={`w-16 sm:w-22 md:w-28 lg:w-34 h-auto object-contain transition-all duration-300 ${lanternIgnited
-              ? 'filter drop-shadow-[0_0_40px_rgba(255,230,80,1)] brightness-125'
-              : 'filter drop-shadow-[0_0_22px_rgba(255,200,40,0.85)]'
-              }`}
-          />
-        </div>
-      </header>
-
-      {/* ========================================================================= */}
-      {/* C. CENTRAL MAIN HERO BANNER                                                */}
-      {/* ========================================================================= */}
-      <main className="relative flex-1 flex flex-col items-center justify-center px-2 sm:px-6 my-auto w-full z-10">
-        {/* Banner Card Arch Container */}
-        <div className="relative w-full max-w-[880px] lg:max-w-[980px] flex flex-col items-center justify-center mx-auto">
-
-          {/* Overlapping Cloud: Top-Center above Arch (Cloud 3) */}
-          <div className="absolute -top-8 sm:-top-12 md:-top-16 left-[22%] sm:left-[26%] md:left-[29%] w-24 sm:w-34 md:w-44 pointer-events-none z-20 animate-float">
-            <img
-              src={clouds.c3}
-              alt="Cloud Above Arch"
-              className="w-full h-auto object-contain filter drop-shadow-[0_6px_12px_rgba(0,0,0,0.4)]"
-            />
+          {/* Cloud above banner arch */}
+          <div className="absolute -top-3 left-[18%] w-16 pointer-events-none z-20 animate-float">
+            <img src={clouds.c3} alt="Cloud Above Arch" className="w-full h-auto object-contain filter drop-shadow-[0_6px_12px_rgba(0,0,0,0.4)]" />
           </div>
 
-          {/* Main Central Container Card: Wooden Arch & Dark Blue Side Pillars */}
+          {/* Banner arch frame + title overlay */}
           <div className="relative w-full flex items-center justify-center">
             <img
               src={khelotsavBg}
               alt="Khelotsav Banner Frame"
-              className="w-full scale-[1.2] h-auto object-contain filter drop-shadow-[0_15px_35px_rgba(0,0,0,0.7)] select-none pointer-events-none"
+              className="w-full scale-[1.15] h-auto object-contain filter drop-shadow-[0_15px_35px_rgba(0,0,0,0.7)] select-none pointer-events-none"
             />
-
-            {/* Title Overlay: Centered "KHELOTSAV" prominently inside/over the center frame */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <img
                 src={khelotsavTitle}
                 alt="KHELOTSAV Main Title"
-                className="w-[82%] sm:w-[85%] md:w-[87%] lg:w-[88%] max-w-[780px] h-auto object-contain filter drop-shadow-[0_8px_18px_rgba(0,0,0,0.7)] pointer-events-auto cursor-pointer transition-all duration-300 hover:scale-[1.03] active:scale-95"
+                className="w-[86%] h-auto object-contain filter drop-shadow-[0_8px_18px_rgba(0,0,0,0.7)] pointer-events-auto cursor-pointer active:scale-95 transition-all duration-300"
                 onClick={() => setActiveModal({
                   title: "KHELOTSAV '26",
                   tagline: "The Ultimate Sports Arena",
@@ -181,12 +127,12 @@ function Home() {
             </div>
           </div>
 
-          {/* Date Overlay: Directly below "KHELOTSAV", horizontally centered */}
-          <div className="relative -mt-6 sm:-mt-8 md:-mt-11 lg:-mt-13 z-20 flex flex-col items-center justify-center">
+          {/* Date below banner */}
+          <div className="relative -mt-5 z-20 mb-1">
             <img
               src={dateOverlay}
               alt="October 2nd to 4th"
-              className="w-52 sm:w-68 md:w-88 lg:w-[410px] h-auto object-contain animate-date-pulse cursor-pointer hover:scale-105 transition-transform"
+              className="w-52 h-auto object-contain animate-date-pulse cursor-pointer active:scale-95 transition-transform"
               onClick={() => setActiveModal({
                 title: "EVENT DATES & SCHEDULE",
                 tagline: "October 2nd to 4th, 2026",
@@ -195,44 +141,227 @@ function Home() {
             />
           </div>
 
-          {/* Overlapping Cloud: Bottom-Left below Arch (Cloud 5) */}
-          <div className="absolute -bottom-8 sm:-bottom-11 md:-bottom-14 left-[2%] sm:left-[12%] md:left-[15%] w-32 sm:w-44 md:w-56 pointer-events-none z-20 animate-float-slow" style={{ transform: 'translateX(-50px)' }}>
+          {/* Bottom-Left Musical Note */}
+          <div className="absolute -bottom-6 left-3 pointer-events-none z-20 animate-note-float">
             <img
-              src={clouds.c5}
-              alt="Cloud Bottom Left"
+              src={musicalNotes}
+              alt="Musical Note"
+              className="w-9 h-auto object-contain filter drop-shadow-[0_0_14px_rgba(255,0,118,0.8)]"
+            />
+          </div>
+
+          {/* Bottom-Right Cloud */}
+          <div className="absolute -bottom-6 -right-4 w-24 pointer-events-none z-20 animate-float-reverse">
+            <img src={clouds.c4} alt="Cloud Bottom Right" className="w-full h-auto object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)]" />
+          </div>
+
+        </div>
+
+        {/* --- MOBILE TEXT EFFECT RIBBON (smaller sizing, full width) --- */}
+        <div className="-mx-3 w-[calc(100%+1.5rem)] mt-[6px] relative z-10">
+          <TextLoop
+            speed={70}
+            direction="forward"
+            ribbonColor="#1F1D66"
+            ribbonHeight={70}
+            imageHeight={32}
+            gap={40}
+            pauseOnHover
+          />
+        </div>
+
+      </div>
+
+      {/* =========================================================================
+          DESKTOP / TABLET LAYOUT  (sm and above)
+          Original layout preserved exactly as-is
+      ========================================================================= */}
+      <>
+        {/* B. TOP & HEADER SECTION */}
+        <header className="hidden sm:flex relative w-full pt-3 sm:pt-5 md:pt-7 px-4 z-20 flex-col items-center">
+          {/* Top Centered Brand Logo: DHWANI 26 */}
+          <div className="relative z-20 group">
+            <img
+              src={dhwaniLogo}
+              alt="DHWANI 26 Logo"
+              className="w-32 sm:w-40 md:w-48 lg:w-56 h-auto object-contain transition-all duration-300 transform group-hover:scale-105 filter drop-shadow-[0_4px_16px_rgba(250,192,17,0.55)] cursor-pointer"
+              onClick={() => setActiveModal({
+                title: "DHWANI '26 FESTIVAL",
+                tagline: "The Grand Annual Cultural & Sports Extravaganza",
+                content: "Dhwani '26 welcomes you to an electrifying celebration of sportsmanship, art, music, and carnival excitement. Join thousands of students as they compete, celebrate, and create memories of a lifetime!"
+              })}
+            />
+          </div>
+
+          {/* Decorative Floating Clouds: Top-Left (Cloud 2) */}
+          <div className="absolute top-1 sm:top-3 -left-30 sm:-left-26 w-52 sm:w-64 md:w-80 lg:w-96 pointer-events-none z-10 animate-float-slow">
+            <img
+              src={clouds.c2}
+              alt="Decorative Top Left Cloud"
               className="w-full h-auto object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)]"
             />
           </div>
 
-          {/* Overlapping Cloud: Bottom-Right overlapping Pillar (Cloud 4) */}
-          <div className="absolute -bottom-7 sm:-bottom-10 md:-bottom-13 right-[-1%] sm:right-[1%] md:right-[3%] w-28 sm:w-38 md:w-50 pointer-events-none z-20 animate-float-reverse">
+          {/* Decorative Floating Clouds: Top-Right (Cloud 1) */}
+          <div className="absolute -top-4 sm:-top-6 right-0 sm:right-4 w-28 sm:w-36 md:w-48 lg:w-56 pointer-events-none z-10 animate-float-reverse rotate-350">
             <img
-              src={clouds.c4}
-              alt="Cloud Bottom Right"
+              src={clouds.c1}
+              alt="Decorative Top Right Cloud"
               className="w-full h-auto object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)]"
             />
           </div>
 
-          {/* Glowing Sky Lantern 1 (Bottom Left): Large glowing lantern anchored at bottom-left edge */}
+          {/* Floating Musical Notes with slight rotation & opacity */}
+          <div className="absolute top-10 sm:top-12 md:top-14 left-[20%] sm:left-[26%] md:left-[29%] pointer-events-none z-10 animate-note-float">
+            <img
+              src={musicalNotes}
+              alt="Musical Note Left"
+              className="w-8 sm:w-11 md:w-13 h-auto object-contain filter drop-shadow-[0_0_12px_rgba(255,0,118,0.7)]"
+            />
+          </div>
+
+          <div className="absolute top-8 sm:top-11 md:top-13 right-[22%] sm:right-[27%] md:right-[30%] pointer-events-none z-10 animate-note-float [animation-delay:1.6s]">
+            <img
+              src={musicalNotes}
+              alt="Musical Note Right"
+              className="w-7 sm:w-10 md:w-12 h-auto object-contain filter drop-shadow-[0_0_12px_rgba(255,0,118,0.7)] transform scale-x-[-1]"
+            />
+          </div>
+
+          {/* Glowing Sky Lantern 2 (Top Left Floating) */}
           <div
             onClick={handleLanternClick}
-            className="absolute top-[25px] -left-[180px] sm:-left-[204px] md:-left-[220px] lg:-left-[236px] z-30 cursor-pointer animate-float transition-all duration-300 hover:scale-110 group"
-            title="Click to ignite lantern"
+            className="absolute top-8 sm:top-11 md:top-14 left-[13%] sm:left-[16%] md:left-[18%] z-20 cursor-pointer animate-float-sway transition-transform duration-300 hover:scale-110"
+            title="Click to illuminate sky lantern"
           >
             <img
-              src={lanternL1}
-              alt="Glowing Sky Lantern Bottom Left"
-              className={`w-24 sm:w-32 md:w-42 lg:w-48 h-auto object-contain -rotate-[14deg] transition-all duration-300 ${lanternIgnited
-                ? 'filter drop-shadow-[0_0_45px_rgba(255,230,80,1)] brightness-125'
-                : 'filter drop-shadow-[0_0_28px_rgba(255,200,30,0.9)] group-hover:drop-shadow-[0_0_42px_rgba(255,225,60,1)]'
+              src={lanternL2}
+              alt="Glowing Sky Lantern Top Left"
+              className={`w-11 sm:w-15 md:w-19 lg:w-22 h-auto object-contain transition-all duration-300 ${lanternIgnited
+                ? 'filter drop-shadow-[0_0_40px_rgba(255,230,80,1)] brightness-125'
+                : 'filter drop-shadow-[0_0_20px_rgba(255,200,40,0.85)]'
                 }`}
             />
           </div>
 
-        </div>
-      </main>
+          {/* Glowing Sky Lantern 3 (Top Right Floating with Long Ribbons) */}
+          <div
+            onClick={handleLanternClick}
+            className="absolute top-3 sm:top-5 md:top-7 right-[8%] sm:right-[11%] md:right-[13%] z-20 cursor-pointer animate-float-sway [animation-delay:2.4s] transition-transform duration-300 hover:scale-110"
+            title="Click to illuminate sky lantern"
+          >
+            <img
+              src={lanternL4}
+              alt="Glowing Sky Lantern Top Right with Ribbons"
+              className={`w-16 sm:w-22 md:w-28 lg:w-34 h-auto object-contain transition-all duration-300 ${lanternIgnited
+                ? 'filter drop-shadow-[0_0_40px_rgba(255,230,80,1)] brightness-125'
+                : 'filter drop-shadow-[0_0_22px_rgba(255,200,40,0.85)]'
+                }`}
+            />
+          </div>
+        </header>
 
-      
+        {/* C. CENTRAL MAIN HERO BANNER */}
+        <main className="hidden sm:flex relative flex-1 flex-col items-center justify-center px-2 sm:px-6 my-auto w-full z-10">
+          {/* Banner Card Arch Container */}
+          <div className="relative w-full max-w-[880px] lg:max-w-[980px] flex flex-col items-center justify-center mx-auto">
+
+            {/* Overlapping Cloud: Top-Center above Arch (Cloud 3) */}
+            <div className="absolute -top-8 sm:-top-12 md:-top-16 left-[22%] sm:left-[26%] md:left-[29%] w-24 sm:w-34 md:w-44 pointer-events-none z-20 animate-float">
+              <img
+                src={clouds.c3}
+                alt="Cloud Above Arch"
+                className="w-full h-auto object-contain filter drop-shadow-[0_6px_12px_rgba(0,0,0,0.4)]"
+              />
+            </div>
+
+            {/* Main Central Container Card: Wooden Arch & Dark Blue Side Pillars */}
+            <div className="relative w-full flex items-center justify-center">
+              <img
+                src={khelotsavBg}
+                alt="Khelotsav Banner Frame"
+                className="w-full scale-[1.2] h-auto object-contain filter drop-shadow-[0_15px_35px_rgba(0,0,0,0.7)] select-none pointer-events-none"
+              />
+
+              {/* Title Overlay: Centered "KHELOTSAV" prominently inside/over the center frame */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <img
+                  src={khelotsavTitle}
+                  alt="KHELOTSAV Main Title"
+                  className="w-[82%] sm:w-[85%] md:w-[87%] lg:w-[88%] max-w-[780px] h-auto object-contain filter drop-shadow-[0_8px_18px_rgba(0,0,0,0.7)] pointer-events-auto cursor-pointer transition-all duration-300 hover:scale-[1.03] active:scale-95"
+                  onClick={() => setActiveModal({
+                    title: "KHELOTSAV '26",
+                    tagline: "The Ultimate Sports Arena",
+                    content: "Khelotsav is a day wrapped up with sports, games and a lot more fun. From indoors to the mega outdoor events, everything comes under one roof. Khelotsav is an opportunity to shine on the field and promises to be a day filled with a lineup of exhilarating games, competitiveness and sportsmanship."
+                  })}
+                />
+              </div>
+            </div>
+
+            {/* Date Overlay: Directly below "KHELOTSAV", horizontally centered */}
+            <div className="relative -mt-6 sm:-mt-8 md:-mt-11 lg:-mt-13 z-20 flex flex-col items-center justify-center">
+              <img
+                src={dateOverlay}
+                alt="October 2nd to 4th"
+                className="w-52 sm:w-68 md:w-88 lg:w-[410px] h-auto object-contain animate-date-pulse cursor-pointer hover:scale-105 transition-transform"
+                onClick={() => setActiveModal({
+                  title: "EVENT DATES & SCHEDULE",
+                  tagline: "October 2nd to 4th, 2026",
+                  content: "Mark your calendars! 3 days of non-stop adrenaline, high-stakes matches, and electrifying sports action. Inauguration starts Oct 2nd at 9:00 AM. Tournament finals and Grand Gala on Oct 4th evening."
+                })}
+              />
+            </div>
+
+            {/* Overlapping Cloud: Bottom-Left below Arch (Cloud 5) */}
+            <div className="absolute -bottom-8 sm:-bottom-11 md:-bottom-14 left-[2%] sm:left-[12%] md:left-[15%] w-32 sm:w-44 md:w-56 pointer-events-none z-20 animate-float-slow" style={{ transform: 'translateX(-50px)' }}>
+              <img
+                src={clouds.c5}
+                alt="Cloud Bottom Left"
+                className="w-full h-auto object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)]"
+              />
+            </div>
+
+            {/* Overlapping Cloud: Bottom-Right overlapping Pillar (Cloud 4) */}
+            <div className="absolute -bottom-7 sm:-bottom-10 md:-bottom-13 right-[-1%] sm:right-[1%] md:right-[3%] w-28 sm:w-38 md:w-50 pointer-events-none z-20 animate-float-reverse">
+              <img
+                src={clouds.c4}
+                alt="Cloud Bottom Right"
+                className="w-full h-auto object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)]"
+              />
+            </div>
+
+            {/* Glowing Sky Lantern 1 (Bottom Left): Large glowing lantern anchored at bottom-left edge */}
+            <div
+              onClick={handleLanternClick}
+              className="absolute top-[25px] -left-[180px] sm:-left-[204px] md:-left-[220px] lg:-left-[236px] z-30 cursor-pointer animate-float transition-all duration-300 hover:scale-110 group"
+              title="Click to ignite lantern"
+            >
+              <img
+                src={lanternL1}
+                alt="Glowing Sky Lantern Bottom Left"
+                className={`w-24 sm:w-32 md:w-42 lg:w-48 h-auto object-contain -rotate-[14deg] transition-all duration-300 ${lanternIgnited
+                  ? 'filter drop-shadow-[0_0_45px_rgba(255,230,80,1)] brightness-125'
+                  : 'filter drop-shadow-[0_0_28px_rgba(255,200,30,0.9)] group-hover:drop-shadow-[0_0_42px_rgba(255,225,60,1)]'
+                  }`}
+              />
+            </div>
+
+          </div>
+        </main>
+      </>
+
+      {/* Desktop TextLoop ribbon */}
+      <div className="hidden sm:block" style={{ marginTop: '-10px' }}>
+        <TextLoop
+          speed={90}
+          direction="forward"
+          ribbonColor="#1F1D66"
+          ribbonHeight={110}
+          imageHeight={56}
+          gap={64}
+          pauseOnHover
+        />
+      </div>
 
       {/* ========================================================================= */}
       {/* INTERACTIVE MODAL POPUP                                                   */}
